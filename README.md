@@ -12,6 +12,8 @@ Rcon是一种协议,是被Source专用服务器使用的一个基于[TCP/IP协�
 
 帮助简化Rcon在Java应用程序中的开发，当然它可以不只用于Rcon，类似于Rcon之类的其他应用程序也可以通过此框架进行开发
 
+在此非常感谢jobfeikens和jenrik为此项目提供的依赖：rcon，这是他们的仓库地址：[jobfeikens/rcon](https://github.com/jobfeikens/rcon)
+
 ### 此框架的作用
 
 此框架主要提供了方法参数以及返回值的检查于修改，同时配备了对象的创建与管理的功能
