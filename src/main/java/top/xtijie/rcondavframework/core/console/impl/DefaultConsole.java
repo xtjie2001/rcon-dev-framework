@@ -8,9 +8,8 @@ import java.io.IOException;
 
 public class DefaultConsole extends AbstractConsole {
 
-
     @Check(reCla = DiscolorCodeReturnCheck.class)
-    public String sendCommand(String command) throws IOException {
+    public String sendCommand(@Check String command) throws IOException {
         return rcon.sendCommand(command);
     }
 

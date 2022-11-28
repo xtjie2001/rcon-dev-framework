@@ -1,5 +1,6 @@
 package top.xtijie.rcondavframework;
 
+import nl.vv32.rcon.Rcon;
 import top.xtijie.rcondavframework.core.console.Console;
 import top.xtijie.rcondavframework.core.console.impl.DefaultConsole;
 import top.xtijie.rcondavframework.core.console.manager.impl.CacheConsoleManager;
@@ -7,24 +8,24 @@ import top.xtijie.rcondavframework.rcon.SimpleRconSource;
 import top.xtijie.rcondavframework.utils.ConsoleBuilder;
 
 import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.nio.channels.SocketChannel;
+import java.nio.charset.StandardCharsets;
+import java.util.Scanner;
 
 public class APP {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
-        try {
-            // 构建控制
-            ConsoleBuilder.build(new CacheConsoleManager(),
-                    new SimpleRconSource("hostname", 25575, "password").open());
-            // 打开控制台
-            DefaultConsole console = Console.open(DefaultConsole.class);
-            // 发送指令
-            String s = console.sendCommand("help");
-            // 输出返回
-            System.out.println(s);
+        ConsoleBuilder.build(new CacheConsoleManager(),
+                new SimpleRconSource("124.221.224.42", 25575, "Xw_1790063649").open());
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        DefaultConsole console = Console.open(DefaultConsole.class);
+
+        String x = console.sendCommand("list");
+
+        System.out.println("/////////////////////////");
+        System.out.println(x);
+        System.out.println("/////////////////////////");
 
     }
 }

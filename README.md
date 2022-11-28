@@ -18,7 +18,7 @@ Rcon是一种协议,是被Source专用服务器使用的一个基于[TCP/IP协�
 
 其中，对象的管理方式，返回值及参数的检查与修改逻辑全都可以自定义，按照自己的需求进行开发
 
-
+在此非常感谢jobfeikens和jenrik为此项目提供的依赖：rcon，这是他们的仓库地址：[jobfeikens/rcon](https://github.com/jobfeikens/rcon)
 
 ## 入门
 
@@ -69,3 +69,13 @@ Console.open(Class\<T extends AbstractConsole\> conClass);
 - 作用：打开自定义的Console类，框架中也自带了一个DefaultConsole控制器类
 - 参数：
   - Class\<T extends AbstractConsole\> conClass：指定自定义的Console类型，要求尽量使用XxxConsole.class的方式加载，不要使用对象获取Class对象的方式，否则会出现不可预料的报错
+
+## 其他
+
+[自定义Console类](./doc/console.md)
+
+[自定义参数过滤器](./doc/param.md)
+
+[自定义返回值过滤器](./doc/return.md)
+
+[自定义ConsoleManager(Console管理器)类](./doc/ConsoleManager.md)

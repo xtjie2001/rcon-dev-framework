@@ -8,6 +8,12 @@
     <artifactId>rcon-dev-framework</artifactId>
     <version>1.0</version>
 
+    <packaging>jar</packaging>
+    <name>xtijie</name>
+    <description>rcon development framework</description>
+    <url>https://github.com/xtjie2001/rcon-dev-framework</url>
+
+
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
@@ -36,5 +42,104 @@
         </dependency>
 
     </dependencies>
+
+
+    <!--配置maven仓库管理器-->
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+
+    <!--配置开源协议-->
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <!--scm信息-->
+    <scm>
+        <url>https://github.com/xtjie2001/rcon-dev-framework</url>
+        <connection>scm:git:https://github.com/xtjie2001/rcon-dev-framework.git</connection>
+    </scm>
+    <!--配置开发者信息-->
+    <developers>
+        <developer>
+            <name>xtijie</name>
+            <email>1790063649@qq.com</email>
+            <roles>
+                <role>Developer</role>
+            </roles>
+            <timezone>+8</timezone>
+        </developer>
+    </developers>
+
+    <build>
+        <plugins>
+            <!-- 用来生成javadoc的插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9.1</version>
+                <!--配置基本信息-->
+                <configuration>
+                    <!--是否聚合,例如项目中可能含有依赖,是否抽取依赖其中的javadoc-->
+                    <aggregate>true</aggregate>
+                    <!--配置字符集-->
+                    <charset>UTF-8</charset>
+                    <encoding>UTF-8</encoding>
+                    <docencoding>UTF-8</docencoding>
+                    <!--临时解决java规范问题,java8之后对注释规范的要求提高,不符合规范则会编译失败-->
+                    <additionalparam>-Xdoclint:none</additionalparam>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!--生成java源文件的jar包的插件-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--maven中负责进行文件校验的插件,主要用到的校验工具为gpg-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

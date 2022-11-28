@@ -20,7 +20,7 @@ public class SimpleParamCheck implements ParameterCheck {
         String pattern = " +|\\t|\\n|\\r";
         Matcher matcher = Pattern.compile(pattern)
                 .matcher(arg.toString());
-        if (!matcher.find())
+        if (matcher.find())
             throw new ParameterFormatException("There can be no spaces, line breaks[\\r or \\n], and tabs[\\t] in the arguments");
         return true;
     }
